@@ -16,9 +16,10 @@ ground_table_data = (
 def table_rows_list(table_data, flat_charge):
     table = [tables_col_headers, (':---------', ':---------:', ':---------:')]
     for i, x in enumerate(table_data):
-        row = [tables_row_headers[i]]
-        row.append(x)
-        row.append(flat_charge)
+        # row = [tables_row_headers[i]]
+        # row.append(x)
+        # row.append(flat_charge)
+        row = (tables_row_headers[i], x, flat_charge)
         table.append(row)
     # print(f'• {table}')
     return table
@@ -60,7 +61,7 @@ with open("README.md", "r") as readme_file:
     readme_content = readme_file.read()
 
 # Insert table mess into README at specified line
-readme_content = table_to_readme(readme_content, 26, insert_mess)
+readme_content = table_to_readme(readme_content, 27, insert_mess)
 
 # return new README to the readme file
 with open("README.md", "w") as readme_file:
