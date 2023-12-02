@@ -26,24 +26,22 @@ Sal has a shipping company and wants to help her customers find the lowest-cost 
 ### Shipping Cost
 
 #### Drone Shipping
+ | Package Weight (lbs) | Price / Pound ($ / lb) | Flat Fee ($) |
+| :--------- | :---------: | :---------: |
+| less than or equal to 2 | 4.50 | 0.00 |
+| more than 2, less than or equal to 6 | 9.00 | 0.00 |
+| more than 6, less than or equal to 10 | 12.00 | 0.00 |
+| more than 10 | 14.25 | 0.00 |
 
-| Package Weight (lbs)                  | Price / Pound ($ / lb) | Flat Fee ($) |
-| :------------------------------------ | :--------------------: | :----------: |
-| less than or equal to 2               |          4.50          |     0.00     |
-| more than 2, less than or equal to 6  |          9.00          |     0.00     |
-| more than 6, less than or equal to 10 |         12.00          |     0.00     |
-| more than 10                          |         14.25          |     0.00     |
+ #### Ground Shipping
+ | Package Weight (lbs) | Price / Pound ($ / lb) | Flat Fee ($) |
+| :--------- | :---------: | :---------: |
+| less than or equal to 2 | 1.50 | 20.00 |
+| more than 2, less than or equal to 6 | 3.00 | 20.00 |
+| more than 6, less than or equal to 10 | 4.00 | 20.00 |
+| more than 10 | 4.75 | 20.00 |
 
-#### Ground Shipping
-
-| Package Weight (lbs)                  | Price / Pound ($ / lb) | Flat Fee ($) |
-| :------------------------------------ | :--------------------: | :----------: |
-| less than or equal to 2               |          1.50          |    20.00     |
-| more than 2, less than or equal to 6  |          3.00          |    20.00     |
-| more than 6, less than or equal to 10 |          4.00          |    20.00     |
-| more than 10                          |          4.75          |    20.00     |
-
-#### **Premium Ground Shipping** = $125.00
+ #### **Premium Ground Shipping** = $125.00
 
 ## Technologies
 

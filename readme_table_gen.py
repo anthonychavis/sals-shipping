@@ -2,14 +2,14 @@ tables_col_headers = (
     'Package Weight (lbs)', 'Price / Pound ($ / lb)', 'Flat Fee ($)'
 )
 tables_row_headers = (
-    ('less than or equal to 2'), ('more than 2, less than or equal to 6'), ('more than 6, less than or equal to 10'), ('more than 10')
+    'less than or equal to 2', 'more than 2, less than or equal to 6', 'more than 6, less than or equal to 10', 'more than 10'
 )
 
 drone_table_data = (
-    ('4.50'), ('9.00'), ('12.00'), ('14.25')
+    '4.50', '9.00', '12.00', '14.25'
 )
 ground_table_data = (
-    ('1.50'), ('3.00'), ('4.00'), ('4.75')
+    '1.50', '3.00', '4.00', '4.75'
 )
 
 
