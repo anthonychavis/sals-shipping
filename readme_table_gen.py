@@ -1,9 +1,11 @@
-drone_table_data = (
-    '4.50', '9.00', '12.00', '14.25'
-)
-ground_table_data = (
-    '1.50', '3.00', '4.00', '4.75'
-)
+drone_table_data = {
+    'per_lb_cost': ('4.50', '9.00', '12.00', '14.25'),
+    'flat_fee': '0.00'
+}
+ground_table_data = {
+    'per_lb_cost': ('1.50', '3.00', '4.00', '4.75'),
+    'flat_fee': '20.00'
+}
 
 
 def table_rows_list(table_data, flat_charge):
@@ -30,7 +32,8 @@ def set_table(table_data, flat_charge):
         md_table += f'| {" | ".join(x)} |\n'
     return md_table
 
-insert_mess = f'#### Drone Shipping\n {set_table(drone_table_data, "0.00")}\n #### Ground Shipping\n {set_table(ground_table_data, "20.00")}\n #### **Premium Ground Shipping** = $125.00\n'
+# insert_mess = f'#### Drone Shipping\n {set_table(drone_table_data, "0.00")}\n #### Ground Shipping\n {set_table(ground_table_data, "20.00")}\n #### **Premium Ground Shipping** = $125.00\n'
+insert_mess = f'#### Drone Shipping\n {set_table(drone_table_data["per_lb_cost"], drone_table_data["flat_fee"])}\n #### Ground Shipping\n {set_table(ground_table_data["per_lb_cost"], ground_table_data["flat_fee"])}\n #### **Premium Ground Shipping** = $125.00\n'
 
 # FILE HANDLING
 def table_to_readme(readme_content, insert_line, table_mess):
