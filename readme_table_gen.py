@@ -16,44 +16,25 @@ ground_table_data = (
 def table_rows_list(table_data, flat_charge):
     table = [tables_col_headers, (':---------', ':---------:', ':---------:')]
     for i, x in enumerate(table_data):
-        # row = [tables_row_headers[i]]
-        # row.append(x)
-        # row.append(flat_charge)
         row = (tables_row_headers[i], x, flat_charge)
         table.append(row)
-    # print(f'• {table}')
     return table
-
-# drone_table = table_rows_list(drone_table_data, '0.00')
-# ground_table = table_rows_list(ground_table_data, '20.00')
-
-# print(f'♦♦ {drone_table}')
 
 def set_table(table_data, flat_charge):
     table = table_rows_list(table_data, flat_charge)
     md_table = ''
-    # for x in table_data:
     for x in table:
         md_table += f'| {" | ".join(x)} |\n'
     return md_table
 
-# print(f'►► {set_table(drone_table)}')
-# print(f'►► {set_table(ground_table)}')
-
-# print()
-# print(f'{set_table(drone_table)}\n {set_table(ground_table)}\n Premium Ground Shipping = $125.00\n')
-
-# insert_mess = f'#### Drone Shipping\n {set_table(drone_table)}\n #### Ground Shipping\n {set_table(ground_table)}\n **Premium Ground Shipping** = $125.00\n'
 insert_mess = f'#### Drone Shipping\n {set_table(drone_table_data, "0.00")}\n #### Ground Shipping\n {set_table(ground_table_data, "20.00")}\n #### **Premium Ground Shipping** = $125.00\n'
 
 # FILE HANDLING
 def table_to_readme(readme_content, insert_line, table_mess):
     # split original readme at \n
-    # lines = readme_content.splitlines(keepends=True)
     lines = readme_content.splitlines()
     # insert thing at specified line based on original readme file
     lines.insert(insert_line, table_mess)
-    # return ''.join(lines)
     return '\n'.join(lines)
 
 # Read original README content
