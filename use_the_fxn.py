@@ -1,5 +1,6 @@
 from low_shipping import find_lowest_shipping
 
+find_lowest_shipping()
 find_lowest_shipping(2)
 find_lowest_shipping(1.5)
 find_lowest_shipping(4.8)

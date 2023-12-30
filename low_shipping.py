@@ -1,4 +1,4 @@
-def find_lowest_shipping(weight):
+def find_lowest_shipping(weight=0):
   if not isinstance(weight, (int, float)) or weight < 0:
     raise TypeError('You entered {}; only positive numerical values (int, float), or 0, are allowed.'.format(weight))
   # Ground Shipping
