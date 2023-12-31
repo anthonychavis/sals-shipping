@@ -32,7 +32,6 @@ def set_table(table_data, flat_charge):
         md_table += f'| {" | ".join(x)} |\n'
     return md_table
 
-# insert_mess = f'#### Drone Shipping\n {set_table(drone_table_data, "0.00")}\n #### Ground Shipping\n {set_table(ground_table_data, "20.00")}\n #### **Premium Ground Shipping** = $125.00\n'
 insert_mess = f'#### Drone Shipping\n {set_table(drone_table_data["per_lb_cost"], drone_table_data["flat_fee"])}\n #### Ground Shipping\n {set_table(ground_table_data["per_lb_cost"], ground_table_data["flat_fee"])}\n #### **Premium Ground Shipping** = $125.00\n'
 
 # FILE HANDLING
