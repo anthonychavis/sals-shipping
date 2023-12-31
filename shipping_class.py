@@ -11,7 +11,7 @@ class Find_Lowest_Shipping:
     @weight.setter
     def weight(self, weight):
         if not isinstance(weight, (int, float)) or weight < 0:
-            raise TypeError(f'You entered {weight}; only positive numerical values (int, float), or 0, are allowed.')
+            raise TypeError(f'You entered {weight}; only a single, positive numerical value (int, float), or 0, is allowed.')  # needs improvement (see tuple/list w/ multi-items) !!
         else:
             self.__weight = weight
     @property
