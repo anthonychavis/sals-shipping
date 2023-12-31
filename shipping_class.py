@@ -11,7 +11,7 @@ class Find_Lowest_Shipping:
     @weight.setter
     def weight(self, weight):
         if not isinstance(weight, (int, float)) or weight < 0:
-            raise TypeError(f'You entered {weight}; only a single, positive numerical value (int, float), or 0, is allowed.')  # needs improvement (see tuple/list w/ multi-items) !!
+            raise TypeError(f'You entered {weight}; only a single, positive numerical value (int, float), or 0, is allowed.')  # needs improvement (see tuple w/ multi-items) !!
         else:
             self.__weight = weight
     @property
@@ -35,24 +35,21 @@ class Find_Lowest_Shipping:
     def ground_shipping_total(self):
         """determine ground shipping cost based on package weight"""
         self.ground_shipping_cost = 20.
-        # print('test a', self.ground_shipping_cost)
         if self.weight <= 2: self.ground_shipping_cost += self.weight * 1.5
         elif self.weight <= 6: self.ground_shipping_cost += self.weight * 3.
         elif self.weight <= 10: self.ground_shipping_cost += self.weight * 4.
         else: self.ground_shipping_cost += self.weight * 4.75
-        # print('test b', self.ground_shipping_cost)
     def drone_shipping_total(self):
         """determine drone shipping cost based on package weight"""
         self.drone_shipping_cost = 0.
-        # print('test 1:', self.drone_shipping_cost)
         if self.weight <= 2: self.drone_shipping_cost +=  self.weight * 4.5
         elif self.weight <= 6: self.drone_shipping_cost +=  self.weight * 9.
         elif self.weight <= 10: self.drone_shipping_cost +=  self.weight * 12.
         else: self.drone_shipping_cost +=  self.weight * 14.25
-        # print('test 2:', self.drone_shipping_cost)
     def compare_costs(self):
         """compare shipping cost of the 3 means of shipping based on package weight"""
         def compare_mssg(shippin_type: str, cost: float):
+            """lowest cost shipping message"""
             return f'The lowest cost method of shipping for a package weighing {self.weight} lbs is {shippin_type} at ${"{:.2f}".format(cost)}.'
         self.ground_shipping_total()
         self.drone_shipping_total()
