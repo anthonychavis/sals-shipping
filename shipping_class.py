@@ -46,16 +46,16 @@ class Find_Lowest_Shipping:
         elif self.weight <= 6: self.drone_shipping_cost +=  self.weight * 9.
         elif self.weight <= 10: self.drone_shipping_cost +=  self.weight * 12.
         else: self.drone_shipping_cost +=  self.weight * 14.25
+    def compare_mssg(self, shippin_type: str, cost: float):
+        """lowest cost shipping message"""
+        return f'The lowest cost method of shipping for a package weighing {self.weight} lbs is {shippin_type} at ${"{:.2f}".format(cost)}.'
     def compare_costs(self):
         """compare shipping cost of the 3 means of shipping based on package weight"""
-        def compare_mssg(shippin_type: str, cost: float):
-            """lowest cost shipping message"""
-            return f'The lowest cost method of shipping for a package weighing {self.weight} lbs is {shippin_type} at ${"{:.2f}".format(cost)}.'
         self.ground_shipping_total()
         self.drone_shipping_total()
-        if self.premium_ground_shipping <= self.ground_shipping_cost and self.premium_ground_shipping <= self.__drone_shipping_cost: return compare_mssg('Premium Ground Shipping', self.premium_ground_shipping)
-        elif self.__drone_shipping_cost <= self.premium_ground_shipping and self.__drone_shipping_cost <= self.ground_shipping_cost: return compare_mssg('Drone Shipping', self.drone_shipping_cost)
-        else: return compare_mssg('Normal Ground Shipping', self.ground_shipping_cost)
+        if self.premium_ground_shipping <= self.ground_shipping_cost and self.premium_ground_shipping <= self.__drone_shipping_cost: return self.compare_mssg('Premium Ground Shipping', self.premium_ground_shipping)
+        elif self.__drone_shipping_cost <= self.premium_ground_shipping and self.__drone_shipping_cost <= self.ground_shipping_cost: return self.compare_mssg('Drone Shipping', self.drone_shipping_cost)
+        else: return self.compare_mssg('Normal Ground Shipping', self.ground_shipping_cost)
     def __repr__(self) -> str:
         lowest_shipping_mssg = self.compare_costs()
         return f'{lowest_shipping_mssg}'
