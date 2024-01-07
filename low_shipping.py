@@ -18,18 +18,14 @@ def find_lowest_shipping(weight: int | float = 0):
     # return '{}: $'.format(ship_method) + "{:.2f}".format(cost)
     return cost
   try:
-    if weight < 0:
-      raise NegativeWeightError(weight)
+    if weight < 0: raise NegativeWeightError(weight)
     ground_shipping_cost = shipping_cost(weight, 'ground')
     drone_shipping_cost = shipping_cost(weight)
-  except TypeError as e:
-    print('💀 there\'s a TypeError 🐞', e)
-  except Exception as e:
-    print('💀 there\'s a bug 🐞', e)
+  except TypeError as e: print(f'💀 this is why on that day, Types were made 🐞\n{e.__class__.__name__}: {e}')
+  except Exception as e: print(f'💀 there\'s a {e.__class__.__name__} 🐞\n{e}')
   else:
     premium_ground_shipping = 125.
     conditions = (ground_shipping_cost, 'Ground Shipping') if ground_shipping_cost < drone_shipping_cost else (drone_shipping_cost, 'Drone Shipping')
     print(f'The lowest cost method of shipping for a package that weighs {weight} lbs is %s at $%s' %(conditions[1] if conditions[0] < premium_ground_shipping else 'Premium Ground Shipping', '{:.2f}'.format(conditions[0]) if conditions[0] < premium_ground_shipping else "{:.2f}".format(premium_ground_shipping)))
     # print(locals())
-  finally:
-    print('🧁')
+  finally: print('🧁')

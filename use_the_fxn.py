@@ -61,7 +61,7 @@ find_lowest_shipping((0))
 print()
 # pkg.weight = (0, 2)
 # print(pkg)
-# find_lowest_shipping((0, 2))
+find_lowest_shipping((0, 2))
 
 print()
 # pkg.weight = ('zero')
@@ -72,4 +72,3 @@ print()
 # print(pkg)
 find_lowest_shipping('zero')
 # find_lowest_shipping(2)
-
