@@ -1,13 +1,17 @@
 from custom_exceptions import NegativeWeightError
-from typing import Dict, Tuple
-# from typing import Dict, Optional, Tuple, Union
+# from typing import Optional, Union
+# from typing import TypedDict
 def find_lowest_shipping(weight: int | float = 0):
   '''inform customer of the lowest cost method of shipping their package based on its weight'''
   try:
     if not isinstance(weight, (int, float)): raise TypeError(f'You entered {weight}; only positive numerical values (int, float), or 0, are allowed.')
     if weight < 0: raise NegativeWeightError(weight)
-    MultipliersTuple = Tuple[float, float, float, float]
-    ShippingDict = Dict[str, float | MultipliersTuple]  # check !!
+    MultipliersTuple = tuple[float]  # check !!
+    ShippingDict = dict[str, float | MultipliersTuple]  # check !!
+    # check !! PEP 589
+    # class ShippingDict(TypedDict):
+    #   shipping_cost: float
+    #   multipliers: tuple(float)
     ground:ShippingDict = {
       # 'shipping_type': 'Standard Ground Shipping',
       'shipping_cost': 20.,
@@ -28,6 +32,8 @@ def find_lowest_shipping(weight: int | float = 0):
       return shipping_cost
     ground_shipping_cost = shipping_cost_fxn(weight, **ground)
     drone_shipping_cost = shipping_cost_fxn(weight, **drone)
+    # print(type(MultipliersTuple))
+    # print(type(ShippingDict))
   except TypeError as e: print(f'💀 this is why on that day, Types were made 🐞\n{e.__class__.__name__}: {e}')
   except Exception as e: print(f'💀 there\'s a {e.__class__.__name__} 🐞\n{e}')
   else:
