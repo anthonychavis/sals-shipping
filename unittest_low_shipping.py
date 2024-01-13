@@ -1,4 +1,5 @@
 import unittest
+from custom_exceptions import NegativeWeightError
 from low_shipping import find_lowest_shipping
 
 class LowShippingTests(unittest.TestCase):
@@ -8,5 +9,8 @@ class LowShippingTests(unittest.TestCase):
     @unittest.expectedFailure
     def test_str_input(self):
         self.assertRaises(TypeError, find_lowest_shipping, 'str')
+    @unittest.expectedFailure
+    def test_neg_wt(self):
+        self.assertRaises(NegativeWeightError, find_lowest_shipping, -9)
     
 unittest.main()
