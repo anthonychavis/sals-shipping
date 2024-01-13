@@ -1,4 +1,5 @@
 import unittest
+from low_shipping import find_lowest_shipping
 
 class LowShippingTests(unittest.TestCase):
     def setUp(self) -> None:
@@ -6,6 +7,6 @@ class LowShippingTests(unittest.TestCase):
         pass
     @unittest.expectedFailure
     def test_str_input(self):
-        raise TypeError('This test will fail')
+        self.assertRaises(TypeError, find_lowest_shipping, 'str')
     
 unittest.main()
