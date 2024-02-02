@@ -3,10 +3,10 @@
 def find_lowest_shipping(weight: int | float = 0):
   '''inform customer of the lowest cost method of shipping their package based on its weight'''
   if not isinstance(weight, (int, float)): 
-    print(f'🚨 You entered "{weight}"; only positive numerical values (int, float), or 0, are allowed. 🚨')
+    print(f'🚨 You entered "{weight}"; only positive numerical values (int, float), or 0, are allowed. 🚨\n')
     return
   if weight < 0: 
-    print(f'🚨 You entered "{weight}", but the minimum allowed weight is 0 lbs. 🚨')
+    print(f'🚨 You entered "{weight}", but the minimum allowed weight is 0 lbs. 🚨\n')
     return
   MultipliersTuple = tuple[float]  # check !!
   ShippingDict = dict[str, float | MultipliersTuple]  # check !!
@@ -45,7 +45,7 @@ def find_lowest_shipping(weight: int | float = 0):
     return e['shipping_cost']
   lowest = [premium, ground, drone]
   lowest.sort(key=myFunc)
-  print(f'For a package weighing {weight} lbs, {lowest[0]["shipping_type"]} saves you the most money. The total cost would be ${"{:.2f}".format(lowest[0]["shipping_cost"])}.\n{lowest[1]["shipping_type"]} would cost ${"{:.2f}".format(lowest[1]["shipping_cost"])}.\n{lowest[2]["shipping_type"]} would be the most expensive option at ${"{:.2f}".format(lowest[2]["shipping_cost"])}.')
+  print(f'For a package weighing {weight} lbs, {lowest[0]["shipping_type"]} saves you the most money. The total cost would be ${"{:.2f}".format(lowest[0]["shipping_cost"])}.\n{lowest[1]["shipping_type"]} would cost ${"{:.2f}".format(lowest[1]["shipping_cost"])}.\n{lowest[2]["shipping_type"]} would be the most expensive option at ${"{:.2f}".format(lowest[2]["shipping_cost"])}.\n')
   # print(locals())
 
 # static code analysis !!
