@@ -45,7 +45,7 @@ def find_lowest_shipping(weight: int | float = 0):
     return e['shipping_cost']
   lowest = [premium, ground, drone]
   lowest.sort(key=myFunc)
-  print(f'For a package weighing {weight} lbs, {lowest[0]["shipping_type"]} saves you the most money. The total cost would be ${"{:.2f}".format(lowest[0]["shipping_cost"])}.\n{lowest[1]["shipping_type"]} would cost ${"{:.2f}".format(lowest[1]["shipping_cost"])}.\n{lowest[2]["shipping_type"]} would be the most expensive option at ${"{:.2f}".format(lowest[2]["shipping_cost"])}.\n')
+  print(f'1️⃣. For a package weighing {weight} lbs, {lowest[0]["shipping_type"]} saves you the most money. The total cost would be ${"{:.2f}".format(lowest[0]["shipping_cost"])}.\n2️⃣. {lowest[1]["shipping_type"]} would cost ${"{:.2f}".format(lowest[1]["shipping_cost"])}.\n3️⃣. {lowest[2]["shipping_type"]} would be the most expensive option at ${"{:.2f}".format(lowest[2]["shipping_cost"])}.\n')
   # print(locals())
 
 # static code analysis !!
