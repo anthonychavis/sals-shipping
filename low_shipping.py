@@ -41,10 +41,10 @@ def find_lowest_shipping(weight: int | float = 0):
   # print(type(ShippingDict))
   ground["shipping_cost"] = shipping_cost_fxn(weight, **ground)
   drone["shipping_cost"] = shipping_cost_fxn(weight, **drone)
-  def myFunc(e):
+  def cost_sort(e):
     return e['shipping_cost']
   lowest = [premium, ground, drone]
-  lowest.sort(key=myFunc)
+  lowest.sort(key=cost_sort)
   print(f'1️⃣. For a package weighing {weight} lbs, {lowest[0]["shipping_type"]} saves you the most money. The total cost would be ${"{:.2f}".format(lowest[0]["shipping_cost"])}.\n2️⃣. {lowest[1]["shipping_type"]} would cost ${"{:.2f}".format(lowest[1]["shipping_cost"])}.\n3️⃣. {lowest[2]["shipping_type"]} would be the most expensive option at ${"{:.2f}".format(lowest[2]["shipping_cost"])}.\n')
   # print(locals())
 
