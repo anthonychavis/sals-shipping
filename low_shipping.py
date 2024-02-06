@@ -30,6 +30,10 @@ def find_lowest_shipping(weight: int | float = 0):
     'shipping_type': 'Premium Ground Shipping',
     'shipping_cost': 125.
   }
+  teleportation: ShippingDict = {
+    'shipping_type': 'Teleportation Shipping',
+    'shipping_cost': 500.
+  }
   def shipping_cost_fxn(weight: int | float, shipping_type: str, flat_fee: float, multipliers: MultipliersTuple, shipping_cost: float):
     """calculate shipping cost based on package weight when shipped via drone or standard ground"""
     if weight <=2: flat_fee += weight * multipliers[0]
@@ -41,11 +45,34 @@ def find_lowest_shipping(weight: int | float = 0):
   # print(type(ShippingDict))
   ground["shipping_cost"] = shipping_cost_fxn(weight, **ground)
   drone["shipping_cost"] = shipping_cost_fxn(weight, **drone)
-  def cost_sort(e):
-    return e['shipping_cost']
-  lowest = [premium, ground, drone]
+  def cost_sort(e: ShippingDict):
+    """Used when sorting 'lowest'. Return the value of shipping_cost if it exists; otherwise return -1 so the dict is at the beginning when 'lowest' is sorted in ascending order"""
+    if "shipping_cost" in e:
+      return e['shipping_cost']
+    else:
+      print(f'{e["shipping_type"]} shipping_cost undefined')
+      return -1
+  lowest = [premium, teleportation, ground, drone]
   lowest.sort(key=cost_sort)
-  print(f'1️⃣. For a package weighing {weight} lbs, {lowest[0]["shipping_type"]} saves you the most money. The total cost would be ${"{:.2f}".format(lowest[0]["shipping_cost"])}.\n2️⃣. {lowest[1]["shipping_type"]} would cost ${"{:.2f}".format(lowest[1]["shipping_cost"])}.\n3️⃣. {lowest[2]["shipping_type"]} would be the most expensive option at ${"{:.2f}".format(lowest[2]["shipping_cost"])}.\n')
+  mssg_to_user = f'For a package weighing {weight} lbs,\n'
+  count = 0
+  error_count = 0
+  lowest_len = len(lowest) - 1
+  # for i, x in enumerate(lowest):
+  for x in lowest:
+    # print(count," - ", len(lowest))
+    if not "shipping_cost" in x:
+      mssg_to_user += f'🚨 shipping_cost undefined for {x["shipping_type"]} 🚨\n'
+      error_count += 1
+      continue
+    elif count == 0:
+      mssg_to_user += f'• {x["shipping_type"]} saves you the most money. The total cost would be ${"{:.2f}".format(x["shipping_cost"])}.\n'
+    elif count == lowest_len - error_count: 
+      mssg_to_user += f'• {x["shipping_type"]} would be the most expensive option at ${"{:.2f}".format(x["shipping_cost"])}.\n'
+    else:
+      mssg_to_user += f'• {x["shipping_type"]} would cost ${"{:.2f}".format(x["shipping_cost"])}.\n'
+    count += 1
+  print(mssg_to_user)
   # print(locals())
 
 # static code analysis !!
