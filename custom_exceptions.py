@@ -5,4 +5,4 @@ class NegativeWeightError(Exception):
 class InputLengthError(Exception):
     '''Exception for input exceeding allowed length'''
     def __init__(self, weight: int | float) -> None: self.weight = weight
-    def __str__(self) -> str: return f'{self.__class__.__name__}: You entered "{self.weight}" which exceeds the allowed 10 number of characters.'
+    def __str__(self) -> str: return f'{self.__class__.__name__}: You entered "{self.weight}" which exceeds the allowed 10 number of digits.'
