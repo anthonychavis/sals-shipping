@@ -1,5 +1,6 @@
 # from typing import Optional, Union
 # from typing import TypedDict
+from custom_exceptions import InputLengthError
 def find_lowest_shipping(weight: int | float = 0):
   '''inform customer of the lowest cost method of shipping their package based on its weight'''
   if not isinstance(weight, (int, float)): 
@@ -8,8 +9,12 @@ def find_lowest_shipping(weight: int | float = 0):
   if weight < 0: 
     print(f'🚨 You entered "{weight}", but the minimum allowed weight is 0 lbs. 🚨\n')
     return
+  try:
+    if len(str(weight).replace('.', '')) > 10: raise InputLengthError(weight)
+  except Exception as e:
+    print(f'🫣{e}🫣')
   MultipliersTuple = tuple[float]  # check !!
-  ShippingDict = dict[str, float | MultipliersTuple]  # check !!
+  ShippingDict = dict[str, float | MultipliersTuple]  # fix & check !!
   # check !! PEP 589
   # class ShippingDict(TypedDict):
   #   flat_fee: float
@@ -54,7 +59,7 @@ def find_lowest_shipping(weight: int | float = 0):
       return -1
   lowest = [premium, teleportation, ground, drone]
   lowest.sort(key=cost_sort)
-  mssg_to_user = f'For a package weighing {weight} lbs,\n'
+  mssg_to_user = f'For a package weighing {weight} lbs:\n'
   count = 0
   error_count = 0
   lowest_len = len(lowest) - 1
