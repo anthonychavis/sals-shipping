@@ -1,7 +1,7 @@
 # from shipping_class import pkg
 from low_shipping import find_lowest_shipping
 
-weight_inputs = (22.10526315789, 3.33333333333333, 2, 1.5, 4.8, 41.5, 8.07, -0, -8.07, (0), (0, 2), ('zero'), 'zero')
+weight_inputs = (22.10526315789, 3.33333333333333, 2, 1.5, 4.8, 41.5, 8.07, -0, -8.07, (0), (0, 2), ('zero'), 'zero', 98765432100, 9876543210, '987654321..0')
 for weight in weight_inputs:
     find_lowest_shipping(weight)
 

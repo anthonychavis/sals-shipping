@@ -1,18 +1,17 @@
 # from typing import Optional, Union
 # from typing import TypedDict
-from custom_exceptions import InputLengthError
 def find_lowest_shipping(weight: int | float = 0):
-  '''inform customer of the lowest cost method of shipping their package based on its weight'''
+  '''inform customer of the lowest cost method of shipping their package based on its weight; input must be a positive int or float not exceeding 10 digits'''
+  def input_err_mssg(weight: int | float, mssg_piece:str): return f'🚨 You entered "{weight}"{mssg_piece}. 🚨\n'
+  if len(str(weight).replace('.', '', 1)) > 10:
+    print(input_err_mssg(weight, ' which exceeds the allowed 10 number of digits'))
+    return
   if not isinstance(weight, (int, float)): 
-    print(f'🚨 You entered "{weight}"; only positive numerical values (int, float), or 0, are allowed. 🚨\n')
+    print(input_err_mssg(weight, '; only positive numerical values, or 0, are allowed'))
     return
   if weight < 0: 
-    print(f'🚨 You entered "{weight}", but the minimum allowed weight is 0 lbs. 🚨\n')
+    print(input_err_mssg(weight, ', but the minimum allowed weight is 0 lbs'))
     return
-  try:
-    if len(str(weight).replace('.', '')) > 10: raise InputLengthError(weight)
-  except Exception as e:
-    print(f'🫣{e}🫣')
   MultipliersTuple = tuple[float]  # check !!
   ShippingDict = dict[str, float | MultipliersTuple]  # fix & check !!
   # check !! PEP 589
@@ -79,5 +78,6 @@ def find_lowest_shipping(weight: int | float = 0):
     count += 1
   print(mssg_to_user)
   # print(locals())
+  return
 
 # static code analysis !!
