@@ -1,3 +1,7 @@
+.vscode
+java.md
+codewars.py
+
 # Byte-compiled / optimized / DLL files
 *.pyd
 # Python-specific
